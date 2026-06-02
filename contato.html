@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Entre em contato com Ozzi Weird para beats exclusivos, mixagem e masterização.">
+  <title>Ozzi Weird — Contato</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  
+  <style>
+    .contact-section {
+      padding: var(--space-4xl) 0;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+      align-items: flex-start;
+    }
+    .contact-info h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: var(--space-md);
+      color: var(--text-primary);
+    }
+    .contact-info p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: var(--space-xl);
+    }
+    .contact-method {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-bottom: var(--space-md);
+      padding: var(--space-md);
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+    }
+    .contact-method svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .contact-form {
+      background: var(--bg-secondary);
+      padding: var(--space-2xl);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+    }
+    .form-group {
+      margin-bottom: var(--space-lg);
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color var(--transition-base);
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+    .btn-submit {
+      width: 100%;
+      background: var(--accent);
+      color: #000;
+      border: none;
+      padding: 1rem;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: background var(--transition-base), transform var(--transition-base);
+    }
+    .btn-submit:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-form {
+        padding: var(--space-xl);
+      }
+    }
+  </style>
+
+  <link rel="icon" type="image/png" href="assets/logo.png">
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header" id="main-header">
+    <div class="container header-inner">
+      <a href="index.html" class="header-logo">
+        <img src="assets/logo.png" alt="Ozzi Weird" class="header-logo-img">
+        <span class="header-logo-text">Ozzi Weird</span>
+      </a>
+      <nav class="header-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="loja.html" class="nav-link">Loja</a>
+        <a href="sobre.html" class="nav-link">Sobre</a>
+        <a href="contato.html" class="nav-link active">Contato</a>
+      </nav>
+      <a href="carrinho.html" class="header-cart" id="cart-icon" aria-label="Carrinho">
+        <svg viewBox="0 0 24 24">
+          <circle cx="9" cy="21" r="1"/>
+          <circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="cart-badge" id="cart-badge">0</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ========== CONTATO ========== -->
+  <main>
+    <section class="contact-section container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h1>Vamos <br><span style="color: var(--accent);">Trabalhar</span></h1>
+          <p>
+            Buscando um beat exclusivo? Precisa de mixagem ou masterização para sua track? 
+            Ou simplesmente perdeu o link de download da sua compra? Mande uma mensagem e responderei o mais rápido possível.
+          </p>
+
+          <div class="contact-method">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <div>
+              <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">Email Oficial</div>
+              <div style="color: var(--text-primary); font-weight: 500;">contato@ozziweird.com</div>
+            </div>
+          </div>
+
+          <div class="contact-method">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            <div>
+              <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">Instagram</div>
+              <div style="color: var(--text-primary); font-weight: 500;">@ozziweird</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulário integrado ao backend próprio -->
+        <div class="contact-form">
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Seu Nome</label>
+              <input type="text" id="name" name="name" required placeholder="Ex: Fulano da Silva">
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Seu E-mail</label>
+              <input type="email" id="email" name="email" required placeholder="seu@email.com">
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Assunto</label>
+              <input type="text" id="subject" name="subject" required placeholder="Ex: Beat Exclusivo">
+            </div>
+
+            <div class="form-group">
+              <label for="message">Mensagem</label>
+              <textarea id="message" name="message" required placeholder="Gostaria de saber mais sobre..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit" id="btn-submit">Enviar Mensagem</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 Ozzi Weird Beats. Todos os direitos reservados.</p>
+      <div class="footer-socials">
+        <a href="#" class="footer-social-link" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" class="footer-social-link" aria-label="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/><polygon points="9.75,15.02 15.5,11.75 9.75,8.48" fill="#000"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/cart.js"></script>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const btn = document.getElementById('btn-submit');
+      const originalText = btn.textContent;
+      btn.textContent = 'Enviando...';
+      btn.disabled = true;
+
+      const payload = {
+        action: 'contato',
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+      };
+
+      try {
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          body: JSON.stringify(payload)
+        });
+        const result = await response.json();
+        
+        if (result.status === 'ok') {
+          btn.textContent = 'Enviado com Sucesso!';
+          btn.style.background = '#00ff41'; // Verde sucesso
+          document.getElementById('contactForm').reset();
+          
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.background = '';
+            btn.disabled = false;
+          }, 3000);
+        } else {
+          throw new Error('Falha no envio');
+        }
+      } catch (err) {
+        console.error(err);
+        btn.textContent = 'Erro! Tente Novamente.';
+        btn.style.background = '#ff3333';
+        
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 3000);
+      }
+    });
+  </script>
+</body>
+</html>

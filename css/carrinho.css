@@ -1,0 +1,128 @@
+/* ===================================
+   OZZI WEIRD BEATS — Carrinho Page
+   =================================== */
+
+/* ---- Carrinho Layout ---- */
+.carrinho-page {
+  padding: var(--space-2xl) 0;
+  min-height: 60vh;
+}
+
+.carrinho-header {
+  margin-bottom: var(--space-xl);
+}
+
+.carrinho-title {
+  margin-bottom: var(--space-xs);
+}
+
+.carrinho-count {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+.carrinho-count span {
+  color: var(--accent);
+}
+
+.carrinho-content {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+/* ---- Item list ---- */
+.carrinho-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.cart-item {
+  animation: fadeIn 0.3s ease;
+}
+
+/* ---- Sidebar (summary) ---- */
+.carrinho-sidebar {
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-lg));
+}
+
+.cart-summary {
+  margin-bottom: var(--space-md);
+}
+
+/* ---- Checkout Modal ---- */
+.checkout-form-group + .checkout-form-group {
+  margin-top: var(--space-md);
+}
+
+.checkout-summary {
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-lg) 0;
+}
+
+.checkout-summary-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  padding: 4px 0;
+}
+
+.checkout-summary-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+  border-top: 1px solid var(--border-color);
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+}
+.checkout-summary-total span {
+  color: var(--accent);
+  font-family: var(--font-mono);
+}
+
+/* ---- Checkout steps ---- */
+.checkout-step {
+  display: none;
+}
+.checkout-step.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Pix waiting animation */
+.pix-waiting {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  justify-content: center;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-top: var(--space-md);
+}
+
+.pix-waiting-dot {
+  width: 8px; height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--accent);
+  animation: pulseGlow 1.5s ease infinite;
+}
+.pix-waiting-dot:nth-child(2) { animation-delay: 0.3s; }
+.pix-waiting-dot:nth-child(3) { animation-delay: 0.6s; }
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .carrinho-content {
+    grid-template-columns: 1fr;
+  }
+  .carrinho-sidebar {
+    position: static;
+  }
+}

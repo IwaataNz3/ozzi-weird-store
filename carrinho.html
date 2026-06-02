@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Carrinho de compras — Ozzi Weird Beats. Finalize sua compra via PIX.">
+  <title>Carrinho — Ozzi Weird Beats</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/carrinho.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo.png">
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header" id="main-header">
+    <div class="container header-inner">
+      <a href="index.html" class="header-logo">
+        <img src="assets/logo.png" alt="Ozzi Weird" class="header-logo-img">
+        <span class="header-logo-text">Ozzi Weird</span>
+      </a>
+      <nav class="header-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="loja.html" class="nav-link">Loja</a>
+        <a href="sobre.html" class="nav-link">Sobre</a>
+        <a href="contato.html" class="nav-link">Contato</a>
+      </nav>
+      <a href="carrinho.html" class="header-cart" id="cart-icon" aria-label="Carrinho">
+        <svg viewBox="0 0 24 24">
+          <circle cx="9" cy="21" r="1"/>
+          <circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="cart-badge" id="cart-badge">0</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ========== CARRINHO ========== -->
+  <main class="carrinho-page">
+    <div class="container">
+      <!-- Header -->
+      <div class="carrinho-header">
+        <h1 class="carrinho-title section-title">Seu <span>Carrinho</span></h1>
+        <p class="carrinho-count" id="cart-item-count"><span>0</span> itens</p>
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state" id="cart-empty" style="display: none;">
+        <svg class="empty-state-icon" viewBox="0 0 24 24">
+          <circle cx="9" cy="21" r="1"/>
+          <circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3 class="empty-state-title">Carrinho vazio</h3>
+        <p class="empty-state-text">Explore a loja e adicione beats que combinam com o seu estilo.</p>
+        <a href="loja.html" class="btn btn-primary">
+          Explorar Beats
+          <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:#000;fill:none;stroke-width:2;">
+            <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Cart Content -->
+      <div class="carrinho-content" id="cart-content" style="display: none;">
+        <!-- Items List -->
+        <div class="carrinho-items" id="cart-items">
+          <!-- Renderizado via JS -->
+        </div>
+
+        <!-- Sidebar Summary -->
+        <div class="carrinho-sidebar">
+          <div class="cart-summary" id="cart-summary">
+            <!-- Renderizado via JS -->
+          </div>
+          <button class="btn btn-primary btn-full" id="btn-checkout"
+                  onclick="openCheckoutModal()" style="margin-top: var(--space-md);">
+            Finalizar Compra
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========== CHECKOUT MODAL ========== -->
+  <div class="modal-overlay" id="checkout-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title">Checkout</h2>
+        <button class="modal-close" onclick="closeCheckoutModal()" aria-label="Fechar">
+          <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+      <!-- Step 1: Formulário -->
+      <div class="checkout-step active" id="step-form">
+        <form id="checkout-form" onsubmit="handleCheckoutSubmit(event)">
+          <div class="form-group checkout-form-group">
+            <label class="form-label" for="checkout-nome">Nome Completo <span style="color:var(--danger)">*</span></label>
+            <input type="text" id="checkout-nome" class="form-input" placeholder="Seu nome completo" required>
+          </div>
+          <div class="form-group checkout-form-group">
+            <label class="form-label" for="checkout-email">E-mail <span style="color:var(--danger)">*</span></label>
+            <input type="email" id="checkout-email" class="form-input" placeholder="Para receber os beats" required>
+          </div>
+          <div class="form-group checkout-form-group">
+            <label class="form-label" for="checkout-cpf">CPF <span style="color:var(--danger)">*</span></label>
+            <input type="text" id="checkout-cpf" class="form-input" placeholder="000.000.000-00" maxlength="14" oninput="maskCPF(this)" required>
+          </div>
+          
+          <div class="form-group checkout-form-group">
+            <label class="form-label" for="checkout-whats">WhatsApp <small style="color:var(--text-muted);font-weight:normal">(Opcional)</small></label>
+            <input type="text" id="checkout-whats" class="form-input" placeholder="(11) 90000-0000">
+          </div>
+          <div class="form-group checkout-form-group">
+            <label class="form-label" for="checkout-artista">Nome Artístico <small style="color:var(--text-muted);font-weight:normal">(Opcional)</small></label>
+            <input type="text" id="checkout-artista" class="form-input" placeholder="Seu vulgo/canal">
+          </div>
+
+          <!-- Termos Checkbox -->
+          <div style="margin-top: var(--space-lg); display: flex; flex-direction: row; gap: 10px; align-items: flex-start;">
+            <input type="checkbox" id="checkout-termos" required style="margin-top: 4px; accent-color: var(--accent);" onclick="handleCheckboxClick(event)">
+            <label for="checkout-termos" style="font-size: 0.8rem; color: var(--text-secondary); cursor: pointer; line-height: 1.4;">
+              Li e concordo com os <a href="#" onclick="showTerms(event)" style="color: var(--accent); text-decoration: underline;">Termos e Licença de Uso</a> dos beats que estou adquirindo.
+            </label>
+          </div>
+
+          <!-- Resumo do pedido -->
+          <div class="checkout-summary" id="checkout-order-summary">
+            <!-- Populado via JS -->
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full">
+            Gerar PIX
+          </button>
+        </form>
+      </div>
+
+      <!-- Step 2: Loading -->
+      <div class="checkout-step" id="step-loading">
+        <div style="text-align: center; padding: var(--space-2xl) 0;">
+          <div class="pix-waiting">
+            <span class="pix-waiting-dot"></span>
+            <span class="pix-waiting-dot"></span>
+            <span class="pix-waiting-dot"></span>
+          </div>
+          <p style="color: var(--text-secondary); margin-top: var(--space-md); font-size: 0.9rem;">
+            Gerando pagamento PIX...
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 3: PIX Gerado -->
+      <div class="checkout-step" id="step-pix">
+        <div class="pix-container">
+          <div class="pix-qr">
+            <img id="pix-qr-img" src="" alt="QR Code PIX">
+          </div>
+
+          <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: var(--space-md);">
+            Escaneie o QR Code acima ou copie o código abaixo:
+          </p>
+
+          <div class="pix-code-container">
+            <span class="pix-code" id="pix-code-text"></span>
+            <button class="pix-copy-btn" onclick="copyPixCode()">Copiar</button>
+          </div>
+
+          <p class="pix-status" id="pix-status">
+            Aguardando pagamento...
+          </p>
+
+          <p style="font-size: 0.7rem; color: var(--text-muted); margin-top: var(--space-lg);">
+            Pedido: <span id="pix-pedido-id" class="font-mono"></span>
+          </p>
+
+          <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: var(--space-md);">
+            Após o pagamento ser confirmado, você receberá os arquivos por e-mail automaticamente.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-top: var(--space-xl);">
+            <button class="btn btn-primary btn-full" style="background: #39ff14; color: #000; font-weight: bold;" onclick="forceCheckPayment()">
+              Já realizei o pagamento!
+            </button>
+            <button class="btn btn-outline btn-full" style="border-color: var(--danger, #ff4444); color: var(--danger, #ff4444);" onclick="handleCancelPayment()">
+              Cancelar Pagamento
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 6: Pagamento Aprovado -->
+      <div class="checkout-step" id="step-success">
+        <div style="text-align: center; padding: var(--space-xl) 0;">
+          <svg viewBox="0 0 24 24" style="width: 64px; height: 64px; stroke: #39ff14; fill: none; stroke-width: 2; margin-bottom: var(--space-md);">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M22 4L12 14.01l-3-3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3 style="color: var(--text-primary); margin-bottom: var(--space-sm);">Pagamento Aprovado!</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--space-lg);">
+            Seus beats já estão liberados. Você também receberá uma cópia no seu e-mail.
+          </p>
+          
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <a href="#" id="success-download-beats" target="_blank" class="btn btn-primary btn-full" style="background: #39ff14; color: #000; font-weight: bold; text-decoration: none;">
+              🎵 Baixar Arquivos dos Beats
+            </a>
+            <a href="#" id="success-download-pdf" target="_blank" class="btn btn-outline btn-full" style="text-decoration: none;">
+              📄 Baixar Contrato de Licença
+            </a>
+          </div>
+          
+          <button class="btn btn-outline btn-full" style="margin-top: var(--space-xl); border: none;" onclick="closeCheckoutModal()">
+            Fechar
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 4: Termos e Licenças -->
+      <div class="checkout-step" id="step-terms">
+        <div style="max-height: 60vh; overflow-y: auto; padding-right: var(--space-sm); margin-bottom: var(--space-md); font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+          <h3 style="color: var(--text-primary); margin-bottom: var(--space-md);">LICENCIAMENTO E TERMOS DE USO</h3>
+          
+          <p style="margin-bottom: var(--space-sm);"><strong>1. OBJETO</strong><br>O presente termo concede o direito de uso não-exclusivo dos beats adquiridos nesta plataforma, de autoria do produtor <strong>Ozzi Weird</strong>, para a criação de uma obra fonográfica.</p>
+          
+          <p style="margin-bottom: var(--space-sm);"><strong>2. PERMISSÕES DE USO (TODOS OS FORMATOS)</strong><br>
+          - Monetização nas plataformas digitais: SIM<br>
+          - Videoclipes e Shows: SIM<br>
+          - Rádios, CDs e DVDs: SIM<br>
+          - Distribuição e Lançamento: SIM<br>
+          - Validade: PERMANENTE</p>
+
+          <p style="margin-bottom: var(--space-sm);"><strong>3. DIREITOS AUTORAIS E CRÉDITOS (OBRIGATÓRIO)</strong><br>
+          É estritamente necessário adicionar os créditos do produtor (<strong>Ozzi Weird</strong>) na descrição ou metadados quando publicar a música nas plataformas digitais (Spotify, YouTube, etc).</p>
+          
+          <p style="margin-bottom: var(--space-sm);"><strong>4. RESTRIÇÕES</strong><br>
+          <span style="color: var(--danger);">Não é permitido</span> colocar o produtor "Ozzi Weird" como intérprete, "feat" ou artista principal no lançamento (Spotify, Deezer, etc.), sendo obrigatório apenas o crédito na composição/produção.</p>
+
+          <p style="margin-bottom: var(--space-sm);"><strong>5. CLÁUSULA DE SUCESSO (ROYALTIES)</strong><br>
+          Caso a obra musical criada atinja o total de <strong>100.000 (cem mil) streams acumulados</strong>, o licenciado se compromete a incluir o PRODUTOR como titular de <strong>10% (dez por cento)</strong> dos direitos autorais da obra fonográfica gerada (split share). O não cumprimento caracteriza violação de contrato e sujeita a suspensão do uso do beat.</p>
+          
+          <p style="margin-bottom: var(--space-sm);"><strong>6. REEMBOLSOS E ARQUIVOS</strong><br>
+          Por se tratar de produtos digitais entregues instantaneamente via email/download, não são realizados reembolsos após a conclusão do pagamento e envio dos arquivos.</p>
+        </div>
+        
+        <button class="btn btn-primary btn-full" onclick="showTermsConfirmation()">
+          Eu Entendi e Aceito
+        </button>
+        <button class="btn btn-outline btn-full" style="margin-top: var(--space-sm); border: none;" onclick="showCheckoutStep('step-form')">
+          Voltar
+        </button>
+      </div>
+
+      <!-- Step 5: Confirmação Final dos Termos -->
+      <div class="checkout-step" id="step-confirm-terms">
+        <div style="text-align: center; padding: var(--space-xl) 0;">
+          <svg viewBox="0 0 24 24" style="width: 48px; height: 48px; stroke: var(--accent); fill: none; stroke-width: 2; margin-bottom: var(--space-md);">
+            <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3 style="color: var(--text-primary); margin-bottom: var(--space-sm);">Aviso Legal Importante</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--space-lg); line-height: 1.5;">
+            Ao prosseguir, você concorda formalmente com todas as cláusulas da licença.<br><br>
+            O não cumprimento das regras de royalties ou a falta de créditos pode acarretar em <strong>quebra de contrato, suspensão do uso do beat e medidas legais cabíveis</strong>.
+          </p>
+
+          <!-- LOUSA DE ASSINATURA -->
+          <div style="margin-bottom: var(--space-lg); text-align: left;">
+            <label class="form-label" style="display: flex; justify-content: space-between; align-items: center;">
+              Assinatura Digital <span style="color:var(--danger)">*</span>
+              <button class="btn btn-outline" style="padding: 2px 8px; font-size: 0.7rem; border: none;" onclick="clearSignature()">Limpar</button>
+            </label>
+            <div style="border: 2px dashed var(--bg-tertiary); border-radius: 8px; background: #050505; position: relative;">
+              <canvas id="signature-pad" width="400" height="150" style="width: 100%; height: 150px; touch-action: none; cursor: crosshair; border-radius: 8px; display: block;"></canvas>
+            </div>
+            <p style="font-size: 0.7rem; color: var(--text-muted); margin-top: 5px;">Assine com o mouse ou o dedo no quadro acima.</p>
+          </div>
+
+          <button class="btn btn-primary btn-full" onclick="acceptTermsAndGoBack()" style="background: var(--accent); box-shadow: var(--shadow-glow); color: #000;">
+            Assinar e Concordar
+          </button>
+          <button class="btn btn-outline btn-full" style="margin-top: var(--space-sm); border: none;" onclick="showCheckoutStep('step-terms')">
+            Voltar
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/ui-helpers.js"></script>
+  <script src="js/carrinho-page.js"></script>
+</body>
+</html>

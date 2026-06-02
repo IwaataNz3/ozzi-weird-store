@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sobre Ozzi Weird — Produtor Musical focado em Trap, Drill e Dark Trap.">
+  <title>Ozzi Weird — Sobre</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  
+  <style>
+    /* Estilos específicos para a página Sobre */
+    .about-section {
+      padding: var(--space-4xl) 0;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+      align-items: center;
+    }
+    .about-image {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      background: var(--bg-tertiary);
+    }
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(1.2);
+      transition: filter var(--transition-base);
+    }
+    .about-image:hover img {
+      filter: grayscale(0%) contrast(1.1);
+    }
+    .about-content h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: var(--space-md);
+      color: var(--text-primary);
+    }
+    .about-content p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: var(--space-lg);
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      margin-top: var(--space-2xl);
+      padding-top: var(--space-xl);
+      border-top: 1px solid var(--border-color);
+    }
+    .stat-item h3 {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+    .stat-item span {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 768px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+      }
+      .about-image {
+        aspect-ratio: 16/9;
+        order: -1;
+      }
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+      }
+    }
+  </style>
+
+  <link rel="icon" type="image/png" href="assets/logo.png">
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header" id="main-header">
+    <div class="container header-inner">
+      <a href="index.html" class="header-logo">
+        <img src="assets/logo.png" alt="Ozzi Weird" class="header-logo-img">
+        <span class="header-logo-text">Ozzi Weird</span>
+      </a>
+      <nav class="header-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="loja.html" class="nav-link">Loja</a>
+        <a href="sobre.html" class="nav-link active">Sobre</a>
+        <a href="contato.html" class="nav-link">Contato</a>
+      </nav>
+      <a href="carrinho.html" class="header-cart" id="cart-icon" aria-label="Carrinho">
+        <svg viewBox="0 0 24 24">
+          <circle cx="9" cy="21" r="1"/>
+          <circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="cart-badge" id="cart-badge">0</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ========== SOBRE ========== -->
+  <main>
+    <section class="about-section container">
+      <div class="about-grid">
+        <div class="about-content">
+          <h1>Quem é <br><span style="color: var(--accent);">Ozzi Weird</span>?</h1>
+          <p>
+            Produtor musical especializado em Trap, Drill e sonoridades Dark e obscuras. 
+            Com uma estética visual e sonora única, o objetivo do projeto Ozzi Weird é fornecer instrumentais
+            da mais alta qualidade para artistas que buscam uma identidade sonora diferenciada e impactante.
+          </p>
+          <p>
+            Meus beats são construídos com baterias agressivas, baixos profundos (808s) e melodias atmosféricas que criam o cenário perfeito para líricas densas e flows complexos. Mais do que apenas vender beats, busco colaborar com a visão artística de cada MC.
+          </p>
+          
+          <div class="stats-grid">
+            <div class="stat-item">
+              <h3>+150</h3>
+              <span>Beats Produzidos</span>
+            </div>
+            <div class="stat-item">
+              <h3>3 Anos</h3>
+              <span>De Experiência</span>
+            </div>
+            <div class="stat-item">
+              <h3>100%</h3>
+              <span>Qualidade de Estúdio</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="about-image">
+          <!-- Você pode substituir por uma foto sua no estúdio -->
+          <img src="assets/logo.png" alt="Ozzi Weird no Estúdio" style="padding: 2rem; background: var(--bg-tertiary); object-fit: contain;">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 Ozzi Weird Beats. Todos os direitos reservados.</p>
+      <div class="footer-socials">
+        <a href="#" class="footer-social-link" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" class="footer-social-link" aria-label="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/><polygon points="9.75,15.02 15.5,11.75 9.75,8.48" fill="#000"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

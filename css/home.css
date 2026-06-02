@@ -1,0 +1,155 @@
+/* ===================================
+   OZZI WEIRD BEATS — Home Page
+   =================================== */
+
+/* ---- Hero Section ---- */
+.hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Background image — logo grande com opacidade baixa */
+.hero-bg-image {
+  position: absolute;
+  inset: 0;
+  background: url('../assets/logo.png') center center / cover no-repeat;
+  opacity: 0.08;
+  filter: blur(2px) saturate(1.2);
+  transform: scale(1.1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, rgba(57, 255, 20, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 80%, rgba(57, 255, 20, 0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Subtle scan line effect for horror aesthetic */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 0.8s ease;
+}
+
+.hero-logo {
+  width: 220px;
+  height: 220px;
+  border-radius: var(--radius-xl);
+  object-fit: cover;
+  margin: 0 auto var(--space-xl);
+  border: 2px solid var(--border-accent);
+  box-shadow:
+    0 0 60px rgba(57, 255, 20, 0.12),
+    0 0 120px rgba(57, 255, 20, 0.06);
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 8vw, 7rem);
+  letter-spacing: 0.15em;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+  text-shadow: 0 0 60px rgba(57, 255, 20, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.hero-subtitle {
+  font-family: var(--font-mono);
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  color: var(--text-secondary);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-2xl);
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 1rem 2.5rem;
+  background: var(--accent);
+  color: #000;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all var(--transition-base);
+  box-shadow: 0 0 30px var(--accent-glow-strong);
+  animation: pulseGlow 3s ease infinite;
+}
+.hero-cta:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 0 50px var(--accent-glow-strong);
+  color: #000;
+}
+.hero-cta svg {
+  width: 20px; height: 20px;
+  fill: #000;
+  stroke: none;
+}
+
+/* ---- Destaques Section ---- */
+.featured-section {
+  padding: var(--space-3xl) 0 var(--space-2xl);
+}
+
+.featured-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-xl);
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.featured-link {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+.featured-link svg {
+  width: 16px; height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .hero { min-height: 70vh; }
+  .hero-logo { width: 160px; height: 160px; }
+  .hero-cta { padding: 0.85rem 1.8rem; font-size: 1.1rem; }
+}
