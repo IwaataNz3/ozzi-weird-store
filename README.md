@@ -42,11 +42,11 @@ Se você quiser baixar e testar a interface na sua máquina:
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git
+git clone https://github.com/IwaataNz3/ozzi-weird-store.git
 ```
 2. Entre na pasta:
 ```bash
-cd SEU-REPOSITORIO
+cd ozzi-weird-store
 ```
 3. Inicie um servidor local (você precisará do Node.js instalado):
 ```bash
