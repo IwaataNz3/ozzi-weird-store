@@ -50,6 +50,19 @@
   color: var(--accent);
 }
 
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 5px;
+}
+.menu-toggle svg {
+  width: 28px;
+  height: 28px;
+}
+
 .header-nav {
   display: flex;
   gap: var(--space-xl);
@@ -1218,10 +1231,60 @@ body.has-pending-payment {
    RESPONSIVE
    =================== */
 @media (max-width: 768px) {
-  /* Header */
+  /* Header Mobile Menu */
   .header-logo-text { font-size: 1.3rem; }
-  .header-nav { gap: var(--space-md); }
-  .nav-link { font-size: 1rem; }
+  
+  .menu-toggle { 
+    display: block; 
+    order: 3; 
+    margin-left: var(--space-md); 
+  }
+  
+  .header-cart { 
+    order: 2; 
+    margin-left: auto; 
+  }
+  
+  .header-logo { 
+    order: 1; 
+  }
+
+  .header-inner {
+    flex-wrap: wrap;
+  }
+
+  .header-nav { 
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: var(--space-xl);
+    gap: var(--space-xl);
+    transform: translateY(-150%);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    order: 4;
+  }
+
+  .header-nav.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-link { 
+    font-size: 1.3rem; 
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
 
   /* Cards */
   .beats-grid {
